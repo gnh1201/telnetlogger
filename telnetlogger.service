@@ -1,0 +1,11 @@
+[Unit]
+Description=Simulates enough of a Telnet connection in order to log failed login attempts
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/telnetlogger -l 2323 -p /var/log/telnetlogger_passwords.txt -i /var/log/telnetlogger_ips.txt
+
+[Install]
+WantedBy=multi-user.target
